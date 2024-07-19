@@ -9,3 +9,5 @@ gcloud projects add-iam-policy-binding $GCP_PROJECT_ID \
 gcloud projects add-iam-policy-binding $GCP_PROJECT_ID \
     --member="serviceAccount:$GCP_PROJECT_NUMBER@cloudbuild.gserviceaccount.com" \
     --role="roles/secretmanager.admin"
+
+# Grant IAM storage admin

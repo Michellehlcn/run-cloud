@@ -1,6 +1,6 @@
 set -e
 
-GCP_PROJECT_ID=sacred-age-412000
+GCP_PROJECT_ID=rapid-access-429801-b1
 GCP_SA=cloud-run-job-sa
 
 gcloud projects add-iam-policy-binding $GCP_PROJECT_ID \

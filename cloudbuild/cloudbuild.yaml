@@ -1,14 +1,14 @@
 substitutions:
-  _DEMO_REPO_NAME: cloud-run-jobs-demo
+  _DEMO_REPO_NAME: run-cloud
   _DEMO_REGION: australia-southeast1
-  _DEMO_COMPOSER_BUCKET: gs://australia-southeast1-demo-c-5f9ae33d-bucket
+  _DEMO_COMPOSER_BUCKET: gs://rapid-access-429801-b1_cloudbuild
 
 steps:
   # Step 1: Clone the GitHub repository
   - name: gcr.io/cloud-builders/git
     args:
       - clone
-      - https://github.com/nukem666/${_DEMO_REPO_NAME}
+      - https://github.com/Michellehlcn/${_DEMO_REPO_NAME}
       - ${_DEMO_REPO_NAME}
 
   # Step 2: Navigate to the app directory and build the Docker image
