@@ -1,16 +1,16 @@
 substitutions:
-  _DEMO_REPO_NAME: run-cloud
+  _DEMO_REPO_NAME: repo
   _DEMO_REGION: australia-southeast1
   _DEMO_COMPOSER_BUCKET: gs://vaulted-cogency-429801-h7_cloudbuild
 steps:
-  # Step 1: Clone the GitHub repository
+  # Step 0: Clone the GitHub repository
   - name: gcr.io/cloud-builders/git
     args:
       - clone
       - https://github.com/Michellehlcn/${_DEMO_REPO_NAME}
       - ${_DEMO_REPO_NAME}
 
-  # Step 2: Navigate to the app directory and build the Docker image
+  # Step 1: Navigate to the app directory and build the Docker image
   - name: gcr.io/cloud-builders/docker
     args:
       - build
@@ -21,20 +21,20 @@ steps:
       - .
     dir: ${_DEMO_REPO_NAME}
 
-  # Step 3: Push the Docker image to Google Artifact Registry
+  # Step 2: Push the Docker image to Google Artifact Registry
   - name: gcr.io/cloud-builders/docker
     args:
       - push
       - ${_DEMO_REGION}-docker.pkg.dev/$PROJECT_ID/repo/demo-app
 
-  # Step 4: Initialize Terraform
+  # Step 3: Initialize Terraform
   - name: hashicorp/terraform:light
     entrypoint: terraform
     args:
       - init
     dir: ${_DEMO_REPO_NAME}/infra/sandbox
 
-  # Step 5: Apply Terraform configuration
+  # Step 4: Apply Terraform configuration
   - name: hashicorp/terraform:light
     entrypoint: terraform
     args:
@@ -42,7 +42,7 @@ steps:
       - -auto-approve
     dir: ${_DEMO_REPO_NAME}/infra/sandbox
 
-  # Step 6: Copy the DAGs folder
+  # Step 5: Copy the DAGs folder
   - name: gcr.io/cloud-builders/gcloud
     args:
       - storage
@@ -51,7 +51,7 @@ steps:
       - ${_DEMO_REPO_NAME}/airflow/dags
       - ${_DEMO_COMPOSER_BUCKET}
 
-  # Step 7: Deploy GCP Workflows configuration
+  # Step 6: Deploy GCP Workflows configuration
   - name: gcr.io/cloud-builders/gcloud
     args:
       - workflows
