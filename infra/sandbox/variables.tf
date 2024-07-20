@@ -1,6 +1,6 @@
 variable "project_id" {
   type    = string
-  default = "rapid-access-429801-b1"
+  default = "vaulted-cogency-429801-h7"
 }
 
 variable "region" {
