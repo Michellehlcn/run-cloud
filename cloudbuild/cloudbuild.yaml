@@ -1,8 +1,7 @@
 substitutions:
   _DEMO_REPO_NAME: run-cloud
   _DEMO_REGION: australia-southeast1
-  _DEMO_COMPOSER_BUCKET: gs://rapid-access-429801-b1_cloudbuild
-
+  _DEMO_COMPOSER_BUCKET: gs://vaulted-cogency-429801-h7_cloudbuild
 steps:
   # Step 1: Clone the GitHub repository
   - name: gcr.io/cloud-builders/git
