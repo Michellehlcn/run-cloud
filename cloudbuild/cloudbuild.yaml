@@ -1,5 +1,5 @@
 substitutions:
-  _DEMO_REPO_NAME: repo
+  _DEMO_REPO_NAME: run-cloud
   _DEMO_REGION: australia-southeast1
   _DEMO_COMPOSER_BUCKET: gs://vaulted-cogency-429801-h7_cloudbuild
 steps:
@@ -15,7 +15,7 @@ steps:
     args:
       - build
       - -t
-      - ${_DEMO_REGION}-docker.pkg.dev/$PROJECT_ID/repo/demo-app
+      - ${_DEMO_REGION}-docker.pkg.dev/$PROJECT_ID/run-cloud/demo-app
       - -f
       - docker/Dockerfile
       - .
