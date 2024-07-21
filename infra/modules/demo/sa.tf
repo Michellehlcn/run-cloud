@@ -1,5 +1,5 @@
 locals {
-  roles = toset(["run.invoker", "iam.serviceAccountUser", "secretmanager.secretAccessor"])
+  roles = toset(["run.invoker", "iam.serviceAccountUser", "secretmanager.secretAccessor","storage.admin"])
 }
 
 resource "google_service_account" "cloud_run_service_account" {
