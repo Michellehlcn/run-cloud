@@ -15,7 +15,7 @@ steps:
     args:
       - build
       - -t
-      - ${_DEMO_REGION}-docker.pkg.dev/$PROJECT_ID/run-cloud/demo-app
+      - ${_DEMO_REGION}-docker.pkg.dev/$PROJECT_ID/repo/demo-app
       - -f
       - docker/Dockerfile
       - .
@@ -25,7 +25,7 @@ steps:
   - name: gcr.io/cloud-builders/docker
     args:
       - push
-      - ${_DEMO_REGION}-docker.pkg.dev/$PROJECT_ID/run-cloud/demo-app
+      - ${_DEMO_REGION}-docker.pkg.dev/$PROJECT_ID/repo/demo-app
 
   # Step 3: Initialize Terraform
   - name: hashicorp/terraform:light
