@@ -58,7 +58,7 @@ resource "google_cloud_run_v2_job" "demo_job" {
           }
         }
       }
-      service_account = google_service_account.cloud_run_service_account.email
+      service_account = "${google_service_account.cloud_run_service_account.project}-compute@developer.gserviceaccount.com"
       max_retries     = 0
       timeout         = "600s"
     }
