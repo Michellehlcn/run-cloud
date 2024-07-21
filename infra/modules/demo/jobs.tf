@@ -53,12 +53,12 @@ resource "google_cloud_run_v2_job" "demo_job" {
           default_mode = 292
           items {
             version = "latest"
-            path    = "secret.txt"
+            path    = "key.json"
             mode    = 256
           }
         }
       }
-      service_account = "${google_service_account.cloud_run_service_account.project}-compute@developer.gserviceaccount.com"
+      service_account = "${google_service_account.cloud_run_service_account.email}"
       max_retries     = 0
       timeout         = "600s"
     }
